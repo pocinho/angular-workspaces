@@ -1,0 +1,199 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "apphub-app-home": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/apphub-app-home",
+      "sourceRoot": "projects/apphub-app-home/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apphub-app-home",
+            "index": "projects/apphub-app-home/src/index.html",
+            "main": "projects/apphub-app-home/src/main.ts",
+            "polyfills": "projects/apphub-app-home/src/polyfills.ts",
+            "tsConfig": "projects/apphub-app-home/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/apphub-app-home/src/favicon.ico",
+              "projects/apphub-app-home/src/assets"
+            ],
+            "styles": [
+              "projects/apphub-app-home/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/apphub-app-home/src/environments/environment.ts",
+                  "with": "projects/apphub-app-home/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "apphub-app-home:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "apphub-app-home:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "apphub-app-home:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/apphub-app-home/src/test.ts",
+            "polyfills": "projects/apphub-app-home/src/polyfills.ts",
+            "tsConfig": "projects/apphub-app-home/tsconfig.spec.json",
+            "karmaConfig": "projects/apphub-app-home/karma.conf.js",
+            "assets": [
+              "projects/apphub-app-home/src/favicon.ico",
+              "projects/apphub-app-home/src/assets"
+            ],
+            "styles": [
+              "projects/apphub-app-home/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/apphub-app-home/tsconfig.app.json",
+              "projects/apphub-app-home/tsconfig.spec.json",
+              "projects/apphub-app-home/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/apphub-app-home/e2e/protractor.conf.js",
+            "devServerTarget": "apphub-app-home:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "apphub-app-home:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "apphub-lib-welcome": {
+      "projectType": "library",
+      "root": "projects/apphub-lib-welcome",
+      "sourceRoot": "projects/apphub-lib-welcome/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/apphub-lib-welcome/tsconfig.lib.json",
+            "project": "projects/apphub-lib-welcome/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/apphub-lib-welcome/src/test.ts",
+            "tsConfig": "projects/apphub-lib-welcome/tsconfig.spec.json",
+            "karmaConfig": "projects/apphub-lib-welcome/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/apphub-lib-welcome/tsconfig.lib.json",
+              "projects/apphub-lib-welcome/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "apphub-lib-blog": {
+      "projectType": "library",
+      "root": "projects/apphub-lib-blog",
+      "sourceRoot": "projects/apphub-lib-blog/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/apphub-lib-blog/tsconfig.lib.json",
+            "project": "projects/apphub-lib-blog/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/apphub-lib-blog/src/test.ts",
+            "tsConfig": "projects/apphub-lib-blog/tsconfig.spec.json",
+            "karmaConfig": "projects/apphub-lib-blog/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/apphub-lib-blog/tsconfig.lib.json",
+              "projects/apphub-lib-blog/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }},
+  "defaultProject": "apphub-app-home"
+}
